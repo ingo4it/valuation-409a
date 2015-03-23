@@ -5,24 +5,24 @@ module Valuation409a
     include Valuation409a::APIOperations::Update
 
     def self.latest(params={})
-      response, api_key = Valuation409a.request(:post, latest_url, @api_key, params)
+      response, api_key = Valuation409a.request(:post, self.latest_url, @api_key, params)
       refresh_from(response, api_key)
       self
     end
 
     def self.new_lead(params={})
-      response, api_key = Valuation409a.request(:post, new_lead_url, @api_key, params)
+      response, api_key = Valuation409a.request(:post, self.new_lead_url, @api_key, params)
       refresh_from(response, api_key)
       self
     end
 
     private
 
-    def latest_url
+    def self.latest_url
       url + '/latest'
     end
 
-    def new_lead_url
+    def self.new_lead_url
       url + '/new-lead'
     end
 
