@@ -19,7 +19,7 @@ module Valuation409a
     end
 
     def refresh
-      response, api_key = Stripe.request(:get, url, @api_key, @retrieve_options)
+      response, api_key = Valuation409a.request(:get, url, @api_key, @retrieve_options)
       refresh_from(response, api_key)
       self
     end
