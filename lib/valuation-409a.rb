@@ -21,19 +21,18 @@ require 'valuation-409a/valuation409a_object'
 require 'valuation-409a/api_resource'
 require 'valuation-409a/singleton_api_resource'
 
-require 'valuation-409a/charge'
+require 'valuation-409a/valuation_firm'
 
 # Errors
 require 'valuation-409a/errors/valuation409a_error'
 require 'valuation-409a/errors/api_error'
 require 'valuation-409a/errors/api_connection_error'
-require 'valuation-409a/errors/card_error'
 require 'valuation-409a/errors/invalid_request_error'
 require 'valuation-409a/errors/authentication_error'
 
 module Valuation409a
   DEFAULT_CA_BUNDLE_PATH = File.dirname(__FILE__) + '/data/ca-certificates.crt'
-  @api_base = 'http://409a.com'
+  @api_base = 'http://localhost:3001'
 
   @ssl_bundle_path  = DEFAULT_CA_BUNDLE_PATH
   @verify_ssl_certs = true
@@ -213,9 +212,7 @@ module Valuation409a
     when 400, 404
       raise invalid_request_error error, rcode, rbody, error_obj
     when 401
-      raise authentication_error error, rcode, rbody, error_obj
-    when 402
-      raise card_error error, rcode, rbody, error_obj
+      raise authentication_error error, rcode, rbody, error_obj    
     else
       raise api_error error, rcode, rbody, error_obj
     end
@@ -229,11 +226,6 @@ module Valuation409a
 
   def self.authentication_error(error, rcode, rbody, error_obj)
     AuthenticationError.new(error[:message], rcode, rbody, error_obj)
-  end
-
-  def self.card_error(error, rcode, rbody, error_obj)
-    CardError.new(error[:message], error[:param], error[:code],
-                  rcode, rbody, error_obj)
   end
 
   def self.api_error(error, rcode, rbody, error_obj)
