@@ -11,10 +11,5 @@ module Valuation409a
       self.class.url
     end
 
-    def self.retrieve(api_key=nil)
-      instance = self.new(nil, api_key)
-      instance.refresh
-      instance
-    end
   end
 end

@@ -32,7 +32,7 @@ require 'valuation-409a/errors/authentication_error'
 
 module Valuation409a
   DEFAULT_CA_BUNDLE_PATH = File.dirname(__FILE__) + '/data/ca-certificates.crt'
-  @api_base = 'http://localhost:3001'
+  @api_base = 'http://localhost:3001/api'
 
   @ssl_bundle_path  = DEFAULT_CA_BUNDLE_PATH
   @verify_ssl_certs = true
@@ -113,6 +113,7 @@ module Valuation409a
     end
 
     [parse(response), api_key]
+    #[response, api_key]
   end
 
   private
@@ -163,7 +164,7 @@ module Valuation409a
   def self.request_headers(api_key)
     headers = {
       :user_agent => "Valuation409a/v1 RubyBindings/#{Valuation409a::VERSION}",
-      :authorization => "Bearer #{api_key}",
+      :authorization => "#{api_key}",
       :content_type => 'application/x-www-form-urlencoded'
     }
 

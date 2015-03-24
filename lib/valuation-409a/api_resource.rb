@@ -18,16 +18,5 @@ module Valuation409a
       "#{self.class.url}/#{CGI.escape(id)}"
     end
 
-    def refresh
-      response, api_key = Valuation409a.request(:get, url, @api_key, @retrieve_options)
-      refresh_from(response, api_key)
-      self
-    end
-
-    def self.retrieve(id, api_key=nil)
-      instance = self.new(id, api_key)
-      instance.refresh
-      instance
-    end
   end
 end

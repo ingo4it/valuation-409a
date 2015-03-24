@@ -17,7 +17,7 @@ module Valuation409a
 
     def self.object_classes
       @object_classes ||= {        
-        'charge' => Charge
+        'valuation_firms' => ValuationFirm
       }
     end
 
