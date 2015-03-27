@@ -34,6 +34,22 @@ def test_response(body, code=200)
   m
 end
 
+def test_lead(params={})
+  id = params[:id] || 'ch_test_lead'
+  {
+    :full_name => 'Larry Wong',
+    :company_name => 'Crims',    
+    :company_stage_id => 2,
+    :is_subscription_valuation => true,
+    :is_do_it_yourself_valuation => false,
+    :is_unsigned_valuation => true,
+    :price_rating => 4,
+    :turnaround_rating => 5,    
+    :defensibility_rating => 7,
+    :email => 'test@valuation409a.com'
+  }.merge(params)
+end
+
 class Test::Unit::TestCase
   include Mocha
 
