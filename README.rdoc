@@ -1,0 +1,120 @@
+- How to use
+
+  1) Initialize
+
+    Valuation409a.api_key = '1+X5zAz5e689ER2lDAumyg=='
+    Valuation409a.verify_ssl_certs = false
+
+  2) New Lead
+
+    POST http://valuation409a-staging.herokuapp.com/api/v1/new-lead
+
+    Example Request:
+
+      curl https://valuation409a-staging.herokuapp.com/api/v1/new-lead \
+       -u BQokikJOvBiI2HlWgH4olfQ2: \     
+       -d full_name=Larry Crims \
+       -d company_name=Crims \
+       -d company_stage_id=2
+       -d is_subscription_valuation=true
+       -d is_do_it_yourself_valuation=true
+       -d is_unsigned_valuation=true
+       -d price_rating=4
+       -d turnaround_rating=6
+       -d defensibility_rating=5.3
+       -d email=test@valuation409a.com
+
+
+       OR - by using gem
+
+       json_obj = Valuation409a::ValuationFirm.new_lead({
+          :full_name => 'Larry Wong',
+          :company_name => 'Crims',    
+          :company_stage_id => 2,
+          :is_subscription_valuation => true,
+          :is_do_it_yourself_valuation => false,
+          :is_unsigned_valuation => true,
+          :price_rating => 4,
+          :turnaround_rating => 5,    
+          :defensibility_rating => 7,
+          :email => 'test@valuation409a.com'
+        })
+
+
+    Example Output:
+      {
+        "response": {
+            "status": true,
+            "code": 200,
+            "errors": [],
+            "timestamp": 210863523600,
+            "data": [
+                {
+                    "datum": {
+                        "name": "RTompkins, LLC",
+                        "email": "RTompkins@svb.com",
+                        "updated_at": "2015-03-18 15:45:00 UTC"
+                    }
+                },
+                {
+                    "datum": {
+                        "name": "alvarez_marsal, LLC",
+                        "email": "alvarez_marsal@test.com",
+                        "updated_at": "2015-03-18 15:45:00 UTC"
+                    }
+                },
+                {
+                    "datum": {
+                        "name": "Duff_phelps, LLC",
+                        "email": "duff_phelps@test.com",
+                        "updated_at": "2015-03-18 15:45:00 UTC"
+                    }
+                }
+            ]
+        }
+      }
+
+  3) Latest
+
+    Example Request:
+
+      curl https://valuation409a-staging.herokuapp.com/api/v1/new-lead \
+         -u BQokikJOvBiI2HlWgH4olfQ2:
+
+      - OR -
+
+      json_obj = Valuation409a::ValuationFirm.latest
+
+    Example Output:
+      {
+          "response": {
+              "status": true,
+              "code": 200,
+              "errors": [],
+              "timestamp": 210863523600,
+              "data": [
+                  {
+                      "datum": {
+                          "name": "RTompkins, LLC",
+                          "email": "RTompkins@svb.com",
+                          "updated_at": "2015-03-18 15:45:00 UTC"
+                      }
+                  },
+                  {
+                      "datum": {
+                          "name": "alvarez_marsal, LLC",
+                          "email": "alvarez_marsal@test.com",
+                          "updated_at": "2015-03-18 15:45:00 UTC"
+                      }
+                  },
+                  {
+                      "datum": {
+                          "name": "Duff_phelps, LLC",
+                          "email": "duff_phelps@test.com",
+                          "updated_at": "2015-03-18 15:45:00 UTC"
+                      }
+                  }
+              ]
+          }
+        }
+
