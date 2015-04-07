@@ -32,8 +32,8 @@ require 'valuation-409a/errors/authentication_error'
 
 module Valuation409a
   DEFAULT_CA_BUNDLE_PATH = File.dirname(__FILE__) + '/data/ca-certificates.crt'
-  @api_base = 'http://localhost:3001/api'
-
+  # @api_base = 'http://localhost:3001/api'
+  @api_base = 'http://valuation409a-staging.herokuapp.com/api'
   @ssl_bundle_path  = DEFAULT_CA_BUNDLE_PATH
   @verify_ssl_certs = true
   @CERTIFICATE_VERIFIED = false

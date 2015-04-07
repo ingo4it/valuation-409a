@@ -9,7 +9,7 @@ module Valuation409a
       assert !obj.respond_to?(:baz)
     end
 
-    should "marshal a stripe object correctly" do
+    should "marshal a valuation409a object correctly" do
       obj = Valuation409a::Valuation409aObject.construct_from({ :id => 1, :name => 'Valuation409a' }, 'apikey')
       m = Marshal.load(Marshal.dump(obj))
       assert_equal 1, m.id

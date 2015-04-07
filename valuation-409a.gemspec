@@ -9,7 +9,8 @@ spec = Gem::Specification.new do |s|
   s.description = '409a is the easiest way to Save Time and money while finding the best solution'
   s.authors = ['Jeron Paul', 'Ingo Klein']
   s.email = ['jeron@409.com', 'ingo@409a.com']
-  s.homepage = 'http://409a.com/'
+  #s.homepage = 'http://409a.com/'
+  s.homepage = 'http://valuation409a-staging.herokuapp.com/'
   s.license = 'Capshare'
 
   s.add_dependency('rest-client', '~> 1.4')
@@ -25,4 +26,5 @@ spec = Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- test/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
+
 end
