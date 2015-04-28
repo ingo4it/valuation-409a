@@ -20,7 +20,7 @@ require 'valuation-409a/util'
 require 'valuation-409a/valuation409a_object'
 require 'valuation-409a/api_resource'
 require 'valuation-409a/singleton_api_resource'
-
+require 'valuation-409a/certificate_blacklist'
 require 'valuation-409a/valuation_firm'
 
 # Errors
@@ -35,7 +35,7 @@ module Valuation409a
   # @api_base = 'http://localhost:3001/api'
   @api_base = 'http://valuation409a-staging.herokuapp.com/api'
   @ssl_bundle_path  = DEFAULT_CA_BUNDLE_PATH
-  @verify_ssl_certs = true
+  @verify_ssl_certs = false
   @CERTIFICATE_VERIFIED = false
 
 

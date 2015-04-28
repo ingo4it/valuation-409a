@@ -35,7 +35,7 @@ def test_response(body, code=200)
 end
 
 def test_lead(params={})
-  id = params[:id] || 'ch_test_lead'
+  id = params[:id]
   {
     :full_name => 'Larry Wong',
     :company_name => 'Crims',    
@@ -48,6 +48,40 @@ def test_lead(params={})
     :defensibility_rating => 7,
     :email => 'test@valuation409a.com'
   }.merge(params)
+end
+
+def response_409a
+  {
+    response: {
+        status: true,
+        code: 200,
+        errors: [],
+        timestamp: 210863523600,
+        data: [
+            {
+                datum: {
+                    name: "RTompkins, LLC",
+                    email: "RTompkins@svb.com",
+                    updated_at: "2015-03-18 15:45:00 UTC"
+                }
+            },
+            {
+                datum: {
+                    name: "alvarez_marsal, LLC",
+                    email: "alvarez_marsal@test.com",
+                    updated_at: "2015-03-18 15:45:00 UTC"
+                }
+            },
+            {
+                datum: {
+                    name: "Duff_phelps, LLC",
+                    email: "duff_phelps@test.com",
+                    updated_at: "2015-03-18 15:45:00 UTC"
+                }
+            }
+        ]
+    }
+  }
 end
 
 class Test::Unit::TestCase
